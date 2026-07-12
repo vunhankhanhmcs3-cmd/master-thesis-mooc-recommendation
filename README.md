@@ -11,10 +11,10 @@
 ## 📌 Giới thiệu tổng quan
 Kho lưu trữ này chứa toàn bộ mã nguồn triển khai thực nghiệm hệ thống **Khuyến nghị khóa học MOOC có thể giải thích** dựa trên tổ hợp **Đồ thị tri thức (Knowledge Graph - KG)** và **Học tăng cường (Reinforcement Learning - RL)**, kết hợp cùng Mô hình ngôn ngữ lớn **Qwen2.5-7B-Instruct** để biên dịch lời giải thích tự nhiên.
 
-Mô hình kế thừa nguyên lý của kiến trúc PGPR và UPGPR, đồng thời mang đến các cải tiến đột phá:
-* **Cơ chế Hàm phần thưởng đa thành phần cải tiến:** $R_{step} = R_{target} + R_{semantic} + R_{pedagogical}$ biến thiên liên tục trong khoảng `[0.0, 11.5]`, giải quyết triệt để bài toán phần thưởng thưa thớt (Sparse Reward).
+Mô hình kế thừa nguyên lý của kiến trúc PGPR và UPGPR, đồng thời mang đến các cải tiến:
+* **Cơ chế Hàm phần thưởng đa thành phần cải tiến:** $R_{step} = R_{target} + R_{semantic} + R_{pedagogical}$ biến thiên liên tục trong khoảng `[0.0, 11.5]`.
 * **Mạng chính sách MLP 2 tầng** với hàm kích hoạt ELU tối ưu hóa số lượng tham số, đảm bảo tác nhân hội tụ nhanh chóng.
-* **Cơ chế Đảm bảo tính xác thực cấu trúc (Structural Grounding)** ép mô hình ngôn ngữ lớn LLM sinh lời giải thích tự nhiên dựa trên các thực thể chứng thực có thật từ đồ thị tri thức, phá vỡ cơ chế "hộp đen" (black-box).
+* **Cơ chế Đảm bảo tính xác thực cấu trúc (Structural Grounding)** ép mô hình ngôn ngữ lớn LLM sinh lời giải thích tự nhiên dựa trên các thực thể chứng thực có thật từ đồ thị tri thức.
 
 ---
 
@@ -29,7 +29,7 @@ Mã nguồn được thiết kế theo dạng đường ống (Pipeline) tuần 
 
 2. **`02_KG_Construction.ipynb`**
    * Xây dựng cấu trúc Đồ thị tri thức Giáo dục dị thể (HIN).
-   * Thiết lập 6 loại thực thể (`User`, `Course`, `Concept`, `Teacher`, `School`, `Category`) và 8 loại quan hệ hai chiều hoàn chỉnh (`enrolled`, `teaches`, `has_concept`, `belongs_to`, `provides` và các quan hệ ngược).
+   * Thiết lập 4 loại thực thể (`User`, `Course`, `Concept`, `Teacher`) và 8 loại quan hệ hai chiều hoàn chỉnh (`enrolled`, `teaches`, `has_concept`, `belongs_to`, `provides` và các quan hệ ngược).
 
 3. **`03_Embedding_Training.ipynb`**
    * Huấn luyện không gian nhúng hình học cho các thực thể và quan hệ trên đồ thị bằng mô hình dịch chuyển **TransE** với $d=100$.
@@ -60,6 +60,12 @@ Mô hình thực nghiệm trên bộ dữ liệu giáo dục quy mô lớn **MOO
 
 ### 1. Cài đặt môi trường
 Kho mã nguồn yêu cầu cài đặt Python $\ge 3.8$ và các thư viện học máy cốt lõi. Hãy tạo môi trường ảo và cài đặt qua tệp `requirements.txt`:
+pip install -r requirements.txt
+(Các thư viện chính bao gồm: torch, torch-geometric, transformers, bitsandbytes, accelerate, numpy, pandas, scikit-learn).
+
+### 2. Tiến trình thực thi
+Để tái lập lại các kết quả nghiên cứu trong đồ án, vui lòng mở lần lượt và chạy toàn bộ cấu trúc các tệp từ 01_... đến 06_... trên môi trường Google Colab theo đúng thứ tự đánh số.
+
+Lưu ý: Đối với bước sinh lời giải thích tự nhiên tại tệp số 06, hãy đảm bảo hệ thống có kết nối mạng ổn định để tải cấu hình trọng số mô hình Qwen từ Hugging Face.
 
 ```bash
-pip install -r requirements.txt
