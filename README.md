@@ -60,11 +60,13 @@ Mô hình thực nghiệm trên bộ dữ liệu giáo dục quy mô lớn **MOO
 
 ### 1. Cài đặt môi trường
 Kho mã nguồn yêu cầu cài đặt Python $\ge 3.8$ và các thư viện học máy cốt lõi. Hãy tạo môi trường ảo và cài đặt qua tệp `requirements.txt`:
+
 pip install -r requirements.txt
+
 (Các thư viện chính bao gồm: torch, torch-geometric, transformers, bitsandbytes, accelerate, numpy, pandas, scikit-learn).
 
 ### 2. Tiến trình thực thi
-Để tái lập lại các kết quả nghiên cứu trong đồ án, vui lòng mở lần lượt và chạy toàn bộ cấu trúc các tệp từ 01_... đến 06_... trên môi trường Google Colab theo đúng thứ tự đánh số.
+Để tái lập lại các kết quả nghiên cứu trong đồ án, vui lòng tải bộ dữ liệu MOOCCube về, giải nén và đặt các tệp tin vào thư mục `data/` trước khi tiến hành chạy toàn bộ cấu trúc các tệp từ 01_... đến 06_... trên môi trường Google Colab theo đúng thứ tự đánh số.
 
 Lưu ý: Đối với bước sinh lời giải thích tự nhiên tại tệp số 06, hãy đảm bảo hệ thống có kết nối mạng ổn định để tải cấu hình trọng số mô hình Qwen từ Hugging Face.
 
