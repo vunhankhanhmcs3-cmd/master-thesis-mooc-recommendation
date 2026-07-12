@@ -60,9 +60,9 @@ Mô hình thực nghiệm trên bộ dữ liệu giáo dục quy mô lớn **MOO
 
 ### 1. Cài đặt môi trường
 Kho mã nguồn yêu cầu cài đặt Python $\ge 3.8$ và các thư viện học máy cốt lõi. Hãy tạo môi trường ảo và cài đặt qua tệp `requirements.txt`:
-
+```bash
 pip install -r requirements.txt
-
+```
 (Các thư viện chính bao gồm: torch, torch-geometric, transformers, bitsandbytes, accelerate, numpy, pandas, scikit-learn).
 
 ### 2. Tiến trình thực thi
@@ -70,4 +70,4 @@ pip install -r requirements.txt
 
 Lưu ý: Đối với bước sinh lời giải thích tự nhiên tại tệp số 06, hãy đảm bảo hệ thống có kết nối mạng ổn định để tải cấu hình trọng số mô hình Qwen từ Hugging Face.
 
-```bash
+
